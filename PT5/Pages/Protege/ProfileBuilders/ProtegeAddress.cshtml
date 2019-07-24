@@ -1,0 +1,53 @@
+﻿@page
+@model MPW.Pages.Protege.ProfileBuilders.ProtegeAddressModel
+@{
+    ViewData["Title"] = "Address";
+}
+
+<h2>Input</h2>
+
+<h4>Address</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AddressData.StreetAddress" class="control-label"></label>
+                <input asp-for="AddressData.StreetAddress" class="form-control" />
+                <span asp-validation-for="AddressData.StreetAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressData.StreetAddress2" class="control-label"></label>
+                <input asp-for="AddressData.StreetAddress2" class="form-control" />
+                <span asp-validation-for="AddressData.StreetAddress2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressData.City" class="control-label"></label>
+                <input asp-for="AddressData.City" class="form-control" />
+                <span asp-validation-for="AddressData.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressData.State" class="control-label"></label>
+                <input asp-for="AddressData.State" class="form-control" />
+                <span asp-validation-for="AddressData.State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressData.ZipCode" class="control-label"></label>
+                <input asp-for="AddressData.ZipCode" class="form-control" />
+                <span asp-validation-for="AddressData.ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

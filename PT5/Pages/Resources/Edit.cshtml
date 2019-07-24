@@ -1,0 +1,60 @@
+﻿@page
+@model MPW.Pages.Resources.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Resource</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Resource.ResourceID" />
+            <div class="form-group">
+                <label asp-for="Resource.Name" class="control-label"></label>
+                <input asp-for="Resource.Name" class="form-control" />
+                <span asp-validation-for="Resource.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Resource.Category" class="control-label"></label>
+                <input asp-for="Resource.Category" class="form-control" />
+                <span asp-validation-for="Resource.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Resource.Type" class="control-label"></label>
+                <input asp-for="Resource.Type" class="form-control" />
+                <span asp-validation-for="Resource.Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Resource.DateAdded" class="control-label"></label>
+                <input asp-for="Resource.DateAdded" class="form-control" />
+                <span asp-validation-for="Resource.DateAdded" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Resource.Link" class="control-label"></label>
+                <input asp-for="Resource.Link" class="form-control" />
+                <span asp-validation-for="Resource.Link" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Resource.CourseID" class="control-label"></label>
+                <select asp-for="Resource.CourseID" class="form-control" asp-items="ViewBag.CourseID"></select>
+                <span asp-validation-for="Resource.CourseID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save Changes" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,41 @@
+@page
+@model MPW.Pages.Documents.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Document</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FileUpload.Category" class="control-label"></label>
+                <input asp-for="FileUpload.Category" class="form-control" />
+                <span asp-validation-for="FileUpload.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FileUpload.Document" class="control-label"></label>
+                <input asp-for="FileUpload.Document" class="form-control" />
+                <span asp-validation-for="FileUpload.Document" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="Upload" class="btn btn-default" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

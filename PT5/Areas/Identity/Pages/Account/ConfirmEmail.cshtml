@@ -1,0 +1,13 @@
+﻿@page
+@model ConfirmEmailModel
+@{
+    ViewData["Title"] = "Confirm email";
+}
+
+<h2>@ViewData["Title"]</h2>
+<div>
+    <p>
+        Thank you for confirming your email. Click the "Continue Profile Creation" button to continue! 
+    </p>
+    <a asp-page="/SelectUserType" class="btn btn-primary">Continue Profile Creation</a>
+</div>

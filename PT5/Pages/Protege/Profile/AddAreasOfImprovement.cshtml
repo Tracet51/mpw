@@ -1,0 +1,44 @@
+﻿@page
+@model MPW.Pages.Protege.Profile.AddAreasOfImprovementModel
+
+@{
+    ViewData["Title"] = "Add Areas Of Improvement";
+}
+
+<h2>Add An Area Of Improvement</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AreasOfImprovement.Name" class="control-label"></label>
+                <input asp-for="AreasOfImprovement.Name" class="form-control" placeholder="Financial Records" />
+                <span asp-validation-for="AreasOfImprovement.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AreasOfImprovement.Description" class="control-label"></label>
+                <input asp-for="AreasOfImprovement.Description" class="form-control" placeholder="We need help tracking out financial records better. Maybe with Quickbooks?"/>
+                <span asp-validation-for="AreasOfImprovement.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AreasOfImprovement.Type" class="control-label"></label>
+                <input asp-for="AreasOfImprovement.Type" class="form-control" placeholder="Ex: Technology, Finance, Account, etc..." />
+                <span asp-validation-for="AreasOfImprovement.Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add Area Of Improvement" class="btn btn-default" />
+                <a asp-page="./Detail" class="btn btn-primary">Profile Page</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

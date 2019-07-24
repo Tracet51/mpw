@@ -1,0 +1,49 @@
+﻿@page
+@model MPW.Pages.Objectives.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Objective</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Objective.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Objective.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Objective.Link)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Objective.Link)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Objective.DateAdded)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Objective.DateAdded)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Objective.DateCompleted)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Objective.DateCompleted)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Objective.EstimatedDateCompleted)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Objective.EstimatedDateCompleted)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Objective.ID">Edit</a> |
+    <a asp-page="./Index" asp-route-courseID="@Model.Objective.CourseID">Back to List</a>
+</div>

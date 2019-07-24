@@ -1,0 +1,20 @@
+﻿@page
+@model MPW.Pages.Client.Profile.DetailModel
+@{
+    ViewData["Title"] = "Details";
+}
+<br />
+<div class="container">
+    <div class="card">
+        <h5 class="card-header">Profile</h5>
+        <div class="card-body">
+            <h5 class="card-title">@Model.Client.AppUser.UserName</h5>
+            <p class="card-text">HUB Coordinator at @Model.Client.AppUser.CompanyName</p>
+            <p class="card-text">@Model.Client.Address?.City, @Model.Client.Address?.State </p>
+            <hr />
+            <p class="card-text">@Model.Client.About</p>
+        </div>
+    </div>
+    <br />
+    <a class="btn btn-primary" asp-page="./EditProfile">Edit Profile</a>
+</div>

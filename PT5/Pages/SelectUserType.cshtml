@@ -1,0 +1,32 @@
+﻿@page
+@model MPW.Pages.SelectUserTypeModel
+@{
+    ViewData["Title"] = "Select User Type";
+}
+
+<h2>Select User Type</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <h4>What kind of user are you?</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserType"></label>
+                <select asp-for="Input.TypeId" class="form-control"
+                        asp-items="@Model.UserType">
+                    <option value="">--- Select User Type ---</option>
+                </select>
+                <span asp-validation-for="UserType" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-default">Register</button>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

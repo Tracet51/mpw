@@ -1,0 +1,71 @@
+﻿@page
+@model MPW.Pages.Resources.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+    int courseID = Model.Resource.CourseID;
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Resource</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Resource.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Resource.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Resource.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Resource.Category)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Resource.Type)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Resource.Type)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Resource.DateAdded)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Resource.DateAdded)
+        </dd>
+        @if (Model.Resource.Link != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Resource.Link)
+            </dt>
+            <dd>
+                <a href="@Model.Resource.Link">@Model.Resource.Link</a>
+            </dd>
+        }
+        @if (Model.Document != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Document.Name)
+            </dt>
+            <dd>
+                <a asp-page="./Details" asp-page-handler="Download" asp-route-id="@Model.Document.DocumentID">@Model.Document.Name</a>
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Resource.Course)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Resource.Course.CourseID)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Resource.ResourceID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="../Mentor/Course/Index" asp-route-id="@Model.Resource.CourseID">Back to Course</a>
+    </form>
+</div>

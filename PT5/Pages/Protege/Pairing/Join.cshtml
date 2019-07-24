@@ -1,0 +1,33 @@
+﻿@page
+@model MPW.Pages.Protege.Pairing.JoinModel
+@{
+    ViewData["Title"] = "Join";
+}
+
+<h2>Join</h2>
+<p>Enter the join code created by your Mentor</p>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Input.ProtegeJoinCode" class="control-label"></label>
+                <input asp-for="Input.ProtegeJoinCode" class="form-control" />
+                <span asp-validation-for="Input.ProtegeJoinCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Join" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

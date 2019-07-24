@@ -1,0 +1,68 @@
+﻿@page
+@model MPW.Pages.Protege.Profile.DetailModel
+@{
+    ViewData["Title"] = "Profile";
+}
+<br />
+<div class="container">
+    <div class="card">
+        <h5 class="card-header">Profile</h5>
+        <div class="card-body">
+            <h5 class="card-title">@Model.Protege.AppUser.UserName</h5>
+            <p class="card-text">Protege at @Model.Protege.AppUser.CompanyName</p>
+            <p class="card-text"> @Model.Protege.Address?.City, @Model.Protege.Address?.State</p>
+            <hr />
+            <p class="card-text">@Model.Protege.About</p>
+        </div>
+    </div>
+    <br />
+    <a class="btn btn-primary" asp-page="./EditProfile" asp-route-ID="@Model.Protege.Address.ID">Edit Profile</a>
+    <br />
+    <br />
+    <div class="card-group">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Areas of Improvement</h5>
+                <ul class="list-group list-group-flush">
+                    @foreach (var sd in Model.Protege.AreasOfImprovement)
+                    {
+                    <li class="list-group-item">
+                        <a class="text-left" asp-page="./AreasOfImprovementDetails" asp-route-id="@sd.ID">
+                            <strong>@sd.Name</strong> - @sd.Type
+                        </a>
+                        |
+                        <a class="text-right" asp-page="./AreasOfImprovementDelete" asp-route-id="@sd.ID">
+                            <strong>Delete</strong>
+                        </a>
+                    </li>
+                    }
+                </ul>
+            </div>
+            <div class="card-footer">
+                <a class="card-link" href="./AddAreasOfImprovement">Add Area Of Improvements</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Certificates</h5>
+                <ul class="list-group list-group-flush">
+                    @foreach (var certificate in Model.Protege.Certificates)
+                    {
+                    <li class="list-group-item">
+                        <a class="text-left" asp-page="./CertificateDetails" asp-route-id="@certificate.ID">
+                            <strong>@certificate.Name</strong> - @certificate.Type
+                        </a>
+                        |
+                        <a class="text-right" asp-page="./CertificateDelete" asp-route-id="@certificate.ID">
+                            <strong>Delete</strong>
+                        </a>
+                    </li>
+                    }
+                </ul>
+            </div>
+            <div class="card-footer">
+                <a href="./AddCertificate" class="card-link">Add Certificates</a>
+            </div>
+        </div>
+    </div>
+</div>

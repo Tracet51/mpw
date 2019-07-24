@@ -1,0 +1,114 @@
+﻿@page
+@model MPW.Pages.Assignments.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>@Model.Assignment.Title</h2>
+
+<div>
+    @if (Model.IsMentor)
+    {
+        <h4><a asp-page="./Edit" asp-route-id="@Model.Assignment.AssignmentID">Edit</a></h4>
+    }
+    <hr />
+    <div class="row">
+        <div class=" col-md-8">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Assignment.Title)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Assignment.Title)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Assignment.Description)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Assignment.Description)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Assignment.StartDate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Assignment.StartDate)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Assignment.DueDate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Assignment.DueDate)
+                </dd>
+                @if (Model.ShowDateCompleted)
+                {
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Assignment.DateCompleted)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Assignment.DateCompleted)
+                    </dd>
+                }
+                else
+                {
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Assignment.DateCompleted)
+                    </dt>
+                    <dd>
+                        <p class="danger">Not Completed</p>
+                    </dd>
+                }
+                @if (Model.Document != null)
+                {
+                    <dt>
+                        Submission
+                    </dt>
+                    <dd>
+                        <a asp-page-handler="Document" asp-route-id="@Model.AssignmentID">@Model.Document.Name</a>
+                    </dd>
+                }
+            </dl>
+            @if (Model.IsMentor)
+            {
+                <form method="post" asp-page-handler="Delete">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Assignment.AssignmentID" />
+                    <input type="hidden" asp-for="Assignment.SessionID" placeholder="Test, Worksheet, Resume, etc..."/>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input type="submit" value="Delete Assignment" class="btn btn-danger" />
+                        </div>
+                    </div>
+                </form>
+            }
+
+        </div>
+        @if (Model.IsProtege)
+        {
+            <div class="col-md-4">
+                <form method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Assignment.AssignmentID" />
+                    <div class="form-group">
+                        <label asp-for="FileUpload.Category" class="control-label"></label>
+                        <input asp-for="FileUpload.Category" class="form-control" />
+                        <span asp-validation-for="FileUpload.Category" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FileUpload.Document" class="control-label"></label>
+                        <input asp-for="FileUpload.Document" class="form-control" />
+                        <span asp-validation-for="FileUpload.Document" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input type="submit" value="Upload" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        }
+
+    </div>
+
+
+</div>

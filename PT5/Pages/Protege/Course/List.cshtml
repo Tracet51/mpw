@@ -1,0 +1,22 @@
+﻿@page
+@model ListModel
+@{
+    ViewData["Title"] = "Course List";
+}
+<h2 class="text-center">List of Courses</h2>
+<div class="card-deck">
+    @foreach (var course in Model.Courses)
+    {
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"><a asp-page="./Index" asp-route-courseID="@course.CourseID">@course.CourseName</a></h5>
+                <p class="card-text">Start Date: @course.StartDate</p>
+                <p class="card-text">End Date: @course.EndDate</p>
+            </div>
+        </div>
+    }
+</div>
+<br />
+<div>
+    <a asp-page="/Protege/Pairing/Index">Back to Pairings</a>
+</div>

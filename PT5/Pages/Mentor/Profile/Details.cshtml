@@ -1,0 +1,71 @@
+﻿@page
+@model MPW.Pages.Mentor.Profile.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<br />
+<div class="container">
+    <div class="card">
+        <h5 class="card-header">Profile</h5>
+        <div class="card-body">
+            <h5 class="card-title">@Model.Mentor.AppUser.UserName</h5>
+            <p class="card-text">Mentor at @Model.Mentor.AppUser.CompanyName</p>
+            <p class="card-text"> @Model.Mentor.Address?.City, @Model.Mentor.Address?.State</p>
+            <hr />
+            <p class="card-text">@Model.Mentor.About</p>
+        </div>
+    </div>
+    <br />
+    <a class="btn btn-primary" asp-page="./EditProfile" asp-route-MentorID="@Model.Mentor.Address.ID">Edit Profile</a>
+    <br />
+    <br />
+
+    <div class="card-group">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Strategic Domains</h5>
+                <ul class="list-group list-group-flush">
+                    @foreach (var sd in Model.Mentor.StrategicDomains)
+                    {
+                    <li class="list-group-item">
+                        <a class="text-left" asp-page="./StrategicDomainDetails" asp-route-id="@sd.ID">
+                            <strong>@sd.Name</strong> - @sd.Description
+                        </a>
+                        |
+                        <a class="text-right" asp-page="./StrategicDomainDelete" asp-route-id="@sd.ID">
+                            <strong>Delete</strong>
+                        </a>
+                    </li>
+                    }
+                </ul>
+            </div>
+            <div class="card-footer">
+                <a class="card-link" href="./AddStrategicDomain">Add Strategic Domains</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Certificates</h5>
+                <ul class="list-group list-group-flush">
+                    @foreach (var certificate in Model.Mentor.Certificates)
+                    {
+                    <li class="list-group-item">
+                        <a class="text-left" asp-page="./CertificateDetails" asp-route-ID="@certificate.ID">
+                            <strong>@certificate.Name</strong> - @certificate.Description
+                        </a>
+                        |
+                        <a class="text-right" asp-page="./CertificateDelete" asp-route-id="@certificate.ID">
+                            <strong>Delete</strong>
+                        </a>
+                    </li>
+                    }
+                </ul>
+            </div>
+            <div class="card-footer">
+                <a class="card-link" href="./AddCertificate">Add @Html.DisplayNameFor(m => m.Mentor.Certificates)</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+﻿@page
+@model ProtegePublicProfileModel
+@{
+    ViewData["Title"] = Model.Protege.AppUser.UserName;
+}
+<div class="container">
+    <div class="card">
+        <h5 class="card-header">Profile</h5>
+        <div class="card-body">
+            <h5 class="card-title">@Model.Protege.AppUser.UserName</h5>
+            <p class="card-text">Protege at @Model.Protege.AppUser.CompanyName</p>
+            <p class="card-text"> @Model.Protege.Address?.City, @Model.Protege.Address?.State</p>
+            <hr />
+            <p class="card-text">@Model.Protege.About</p>
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="card-group">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayNameFor(m => m.Protege.AreasOfImprovement)</h5>
+                <ul class="list-group list-group-flush">
+                    @foreach (var sd in Model.Protege.AreasOfImprovement)
+                    {
+                        <li class="list-group-item">
+                            <a class="text-left" asp-page="/Protege/Profile/AreasOfImprovementDetails" asp-route-id="@sd.ID">
+                                <strong>@sd.Name</strong> - @sd.Type
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayNameFor(m => m.Protege.Certificates)</h5>
+                <ul class="list-group list-group-flush">
+                    @foreach (var certificate in Model.Protege.Certificates)
+                    {
+                        <li class="list-group-item">
+                            <a class="text-left" asp-page="/Protege/Profile/CertificateDetails" asp-route-id="@certificate.ID">
+                                <strong>@certificate.Name</strong> - @certificate.Type
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

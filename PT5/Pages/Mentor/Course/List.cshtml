@@ -1,0 +1,24 @@
+﻿@page
+@model ListModel
+@{
+    ViewData["Title"] = "List of Courses";
+}
+<h2 class="text-center">List of Courses</h2>
+<a asp-page="./Create" asp-route-id="@Model.JoinCode">Create New Course</a>
+<br />
+<div class="card-deck">
+    @foreach (var course in Model.Courses)
+    {
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"><a asp-page="./Index" asp-route-id="@course.CourseID">@course.CourseName</a></h5>
+                <p class="card-text">Start Date: @course.StartDate</p>
+                <p class="card-text">End Date: @course.EndDate</p>
+            </div>
+        </div>
+    }
+</div>
+<br />
+<div>
+    <a asp-page="/Mentor/Pairing/Index">Back to Pairings</a>
+</div>

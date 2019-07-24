@@ -1,0 +1,32 @@
+﻿@page
+@model MPW.Pages.Mentor.Profile.StrategicDomainDetailsModel
+
+@{
+    ViewData["Title"] = "Strategic Domain Details";
+}
+
+<h2>Strategic Domain Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StrategicDomain.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StrategicDomain.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StrategicDomain.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StrategicDomain.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StrategicDomain.Type)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StrategicDomain.Type)
+        </dd>
+    </dl>
+</div>

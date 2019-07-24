@@ -1,0 +1,43 @@
+﻿@page
+@model MPW.Pages.Mentor.Profile.AddCertificateModel
+
+@{
+    ViewData["Title"] = "Certificates";
+}
+
+<h2>Add a Certificate</h2>
+@if (Model.SuccessCreated != null)
+{
+    <div class="alert alert-success" role="alert"><strong>@Model.SuccessCreated</strong></div>
+}
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Certificate.Name" class="control-label"></label>
+                <input asp-for="Certificate.Name" class="form-control" placeholder="Glassdoor 2018 Best Place to Work" />
+                <span asp-validation-for="Certificate.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Certificate.Description" class="control-label"></label>
+                <input asp-for="Certificate.Description" class="form-control" placeholder="We were voted the best place to work in the Seattle Area" />
+                <span asp-validation-for="Certificate.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Certificate.Type" class="control-label"></label>
+                <input asp-for="Certificate.Type" class="form-control" placeholder="Ex: Award, Honor, Certification" />
+                <span asp-validation-for="Certificate.Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add Certificate" class="btn btn-default" />
+                <a asp-page="./Details" class="btn btn-danger">Back To Profile</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

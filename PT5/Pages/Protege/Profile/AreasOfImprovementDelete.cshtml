@@ -1,0 +1,38 @@
+﻿@page
+@model MPW.Pages.Protege.Profile.AreasOfImprovementDeleteModel
+
+@{
+    ViewData["Title"] = "Areas Of Improvement Delete";
+}
+
+<h2>Delete @Model.AreasOfImprovement.Name</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AreasOfImprovement.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AreasOfImprovement.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AreasOfImprovement.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AreasOfImprovement.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AreasOfImprovement.Type)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AreasOfImprovement.Type)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="AreasOfImprovement.ID" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>
+</div>

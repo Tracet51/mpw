@@ -1,0 +1,88 @@
+﻿@page
+@model MPW.Pages.Sessions.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <h2 class="text-center">@Model.Session.Name</h2>
+    <h4 class="text-center">@Model.Session.Description</h4>
+    <h5 class="title">Assignments</h5>
+    @if (Model.IsMentor)
+    {
+        <a asp-page="/Assignments/Create" asp-route-id="@Model.Session.SessionID">Create New Assignment</a>
+    }
+    <div class="card-deck">
+        @foreach (var assignment in Model?.Session?.Assignments)
+        {
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><a asp-page="/Assignments/Details" asp-route-id="@assignment.AssignmentID">@assignment.Title</a></h5>
+                    <p class="card-text">@assignment.Description</p>
+                    <p class="card-text">Start Date: @assignment.StartDate</p>
+                    <p class="card-text">Due Date: @assignment.DueDate</p>
+                </div>
+            </div>
+        }
+    </div>
+    <br />
+    <h5 class="title">Agenda</h5>
+    @if (Model.IsProtege)
+    {
+    <a asp-page="/Agendas/Create" asp-route-id="@Model.Session.SessionID">Upload New Agenda</a>   
+    }
+    @if (Model.Session.Agenda != null)
+    {
+        <div class="card-group">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><a asp-page="/Agendas/Details" asp-route-id="@Model.Session.Agenda.AgendaID">@Model.Session.Agenda.Name</a></h5>
+                    <p class="card-text">Uploaded: @Model.Session.Agenda.CreationDate</p>
+                </div>
+            </div>
+        </div>
+    }
+    <br />
+    <br />
+    <h5 class="title">Session Documents</h5>
+    @if (Model.IsMentor)
+    {
+    <a asp-page="/Sessions/UploadDocument" asp-route-id="@Model.Session.SessionID">Upload New Session Document</a>
+    }
+    <div class="card-deck">
+        @foreach (var document in Model.Session.Documents)
+        {
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><a asp-page-handler="Document" asp-route-id="@document.DocumentID">@document.Name</a></h5>
+                    <p class="card-text">Upload Date: @document.UploadDate</p>
+                    <p class="card-text">Category: @document.Category</p>
+                    <form method="post" asp-page-handler="DeleteDocument" asp-route-id="@document.DocumentID">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input asp-for="Session.SessionID" type="hidden" />
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div>
+    @if (Model.IsMentor)
+    {
+        <a asp-page="./Edit" asp-route-sessionID="@Model.Session.SessionID">Edit</a> <br />
+        <a asp-page="/Mentor/Course/Index" asp-route-id="@Model.Session.Course.CourseID">Back to @Model.Session.Course.CourseName Dashboard</a>
+    }
+    @if (Model.IsProtege)
+    {
+    <a asp-page="/Protege/Course/index" asp-route-courseID="@Model.Session.Course.CourseID">Back to @Model.Session.Course.CourseName Dashboard</a>
+    }
+    @if (Model.IsClient)
+    {
+    <a asp-page="/Client/Course/Index" asp-route-courseID="@Model.Session.Course.CourseID">Back to @Model.Session.Course.CourseName Dashboard</a>
+    }
+
+</div>

@@ -1,0 +1,50 @@
+﻿@page
+@model MPW.Pages.Client.ProfileCreation.ClientAddressModel
+@{
+    ViewData["Title"] = "ClientAddress";
+}
+
+<h2>Input</h2>
+
+<h4>Address</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="AddressClientData.StreetAddress" class="control-label"></label>
+                <input asp-for="AddressClientData.StreetAddress" class="form-control" />
+                <span asp-validation-for="AddressClientData.StreetAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressClientData.StreetAddress2" class="control-label"></label>
+                <input asp-for="AddressClientData.StreetAddress2" class="form-control" />
+                <span asp-validation-for="AddressClientData.StreetAddress2" class="text-danger"></span>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AddressClientData.City" class="control-label"></label>
+                <input asp-for="AddressClientData.City" class="form-control" />
+                <span asp-validation-for="AddressClientData.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressClientData.State" class="control-label"></label>
+                <input asp-for="AddressClientData.State" class="form-control" />
+                <span asp-validation-for="AddressClientData.State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressClientData.ZipCode" class="control-label"></label>
+                <input asp-for="AddressClientData.ZipCode" class="form-control" />
+                <span asp-validation-for="AddressClientData.ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Finish Profile" class="btn btn-danger" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

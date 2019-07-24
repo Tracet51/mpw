@@ -1,0 +1,34 @@
+﻿@page
+@model MPW.Pages.Protege.Profile.AreasOfImprovementDetailsModel
+
+@{
+    ViewData["Title"] = "AreasOfImprovementDetails";
+}
+
+<h2>@Model.AreasOfImprovement.Name Details</h2>
+
+<div>
+    <h4>AreasOfImprovement</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AreasOfImprovement.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AreasOfImprovement.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AreasOfImprovement.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AreasOfImprovement.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AreasOfImprovement.Type)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AreasOfImprovement.Type)
+        </dd>
+    </dl>
+</div>
+

@@ -1,0 +1,35 @@
+﻿@page
+@model MPW.Pages.Sessions.UploadDocumentModel
+@{
+    ViewData["Title"] = "UploadDocument";
+}
+
+<h2>Upload Session Document</h2>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="SessionID" type="hidden" />
+            <div class="form-group">
+                <label asp-for="FileUpload.Category" class="control-label"></label>
+                <input asp-for="FileUpload.Category" class="form-control" />
+                <span asp-validation-for="FileUpload.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FileUpload.Document" class="control-label"></label>
+                <input asp-for="FileUpload.Document" class="form-control" />
+                <span asp-validation-for="FileUpload.Document" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="Upload" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+

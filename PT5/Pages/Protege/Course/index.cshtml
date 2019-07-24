@@ -1,0 +1,181 @@
+﻿@page
+@model MPW.Pages.Protege.Course.indexModel
+@{
+    ViewData["Title"] = Model.Course.CourseName;
+}
+
+<h2 class="text-center">@Model.Course.CourseName's Dashboard</h2>
+
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="objectives-tab" data-toggle="tab" href="#objectives" role="tab" aria-controls="objectives" aria-selected="true">Trello</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="events-tab" data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false"> @Html.DisplayNameFor(model => model.Course.Events)</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="sessions-tab" data-toggle="tab" href="#sessions" role="tab" aria-controls="sessions" aria-selected="false">@Html.DisplayNameFor(model => model.Course.Sessions)</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="resources-tab" data-toggle="tab" href="#resources" role="tab" aria-controls="resources" aria-selected="false">@Html.DisplayNameFor(model => model.Course.Resources)</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="objectives" role="tabpanel" aria-labelledby="objectives-tab">
+        <br />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Course.Objectives[0].Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Course.Objectives[0].Link)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.ObjectiveToDisplay; i++)
+                {
+                    var item = Model.Course.Objectives[i];
+                    <tr>
+                        <td>
+                            <a asp-page="/Objectives/Details" asp-route-id="@item.ID">@item.Name</a>
+                        </td>
+                        <td>
+                            <a href="@Model.Course.Objectives[i].Link">@Model.Course.Objectives[i].Link</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">
+
+        <br />
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Course.Events[0].EventName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Course.Events[0].Type)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Course.Events[0].StartDate)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.EventsToDisplay; i++)
+                {
+                    var item = Model.Course.Events[i];
+                    <tr>
+                        <td>
+                            <a asp-page="/Events/Details" asp-route-id="@item.EventID">@item.EventName</a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Course.Events[i].Type)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Course.Events[i].StartDate)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="sessions" role="tabpanel" aria-labelledby="sessions-tab">
+
+        <br />
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Course.Sessions[0].Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Course.Sessions[0].StartDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Course.Sessions[0].EndDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Course.Sessions[0].Description)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.SessionsToDisplay; i++)
+                {
+                    var item = Model.Course.Sessions[i];
+                    <tr>
+                        <td>
+                            <a asp-page="/Sessions/Details" asp-route-id="@item.SessionID">@item.Name</a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Course.Sessions[i].StartDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Course.Sessions[i].EndDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Course.Sessions[i].Description)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="resources" role="tabpanel" aria-labelledby="resources-tab">
+
+        <br />
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Course.Resources[0].Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Course.Resources[0].Type)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Course.Resources[0].Category)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Course.Resources.Count; i++)
+                {
+                    var item = Model.Course.Resources[i];
+                    <tr>
+                        <td>
+                            @if (item.Type == "Link")
+                            {
+                                <a href="@item.Link">@item.Name</a>
+                            }
+                            else
+                            {
+                                <a asp-page="./Index" asp-page-handler="Download" asp-route-id="@item.ResourceID">@item.Name</a>
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Course.Resources[i].Type)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Course.Resources[i].Category)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <a asp-page="/Protege/Course/List" asp-route-pairID="@Model.Course.PairID">Back to All Courses</a>
+    </div>
+</div>

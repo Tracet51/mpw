@@ -1,0 +1,54 @@
+﻿@page
+@model MPW.Pages.Objectives.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit @Model.Objective.Name</h2>
+
+<h4>Objective</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Objective.ID" />
+            <input type="hidden" asp-for="Objective.CourseID" />
+            <div class="form-group">
+                <label asp-for="Objective.Name" class="control-label"></label>
+                <input asp-for="Objective.Name" class="form-control" />
+                <span asp-validation-for="Objective.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Objective.Link" class="control-label"></label>
+                <input asp-for="Objective.Link" class="form-control" />
+                <span asp-validation-for="Objective.Link" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Objective.EstimatedDateCompleted" class="control-label"></label>
+                <input asp-for="Objective.EstimatedDateCompleted" class="form-control" />
+                <span asp-validation-for="Objective.EstimatedDateCompleted" class="text-danger"></span>
+            </div>
+            <div class="checkbox">
+                <input asp-for="Completed" class="form-control" />
+                <label asp-for="Completed" class="control-label"></label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+        <form method="post">
+            <input type="hidden" asp-for="Objective.ID" />
+            <input type="hidden" asp-for="Objective.CourseID" />
+            <div class="form-group">
+                <input asp-page-handler="Delete" type="submit" value="Delete" class="btn btn-danger" /> 
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

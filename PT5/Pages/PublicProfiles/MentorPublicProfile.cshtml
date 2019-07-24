@@ -1,0 +1,53 @@
+﻿@page
+@model MentorPublicProfileModel
+@{
+    ViewData["Title"] = Model.Mentor.AppUser.UserName;
+}
+
+<br />
+<div class="container">
+    <div class="card">
+        <h5 class="card-header">Profile</h5>
+        <div class="card-body">
+            <h5 class="card-title">@Model.Mentor.AppUser.UserName</h5>
+            <p class="card-text">Mentor at @Model.Mentor.AppUser.CompanyName</p>
+            <p class="card-text"> @Model.Mentor.Address?.City, @Model.Mentor.Address?.State</p>
+            <hr />
+            <p class="card-text">@Model.Mentor.About</p>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="card-group">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayNameFor(m => m.Mentor.StrategicDomains)</h5>
+                <ul class="list-group list-group-flush">
+                    @foreach (var sd in Model.Mentor.StrategicDomains)
+                    {
+                        <li class="list-group-item">
+                            <a class="text-left" asp-page="/Mentor/Profile/StrategicDomainDetails" asp-route-id="@sd.ID">
+                                <strong>@sd.Name</strong> - @sd.Type
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayNameFor(m => m.Mentor.Certificates)</h5>
+                <ul class="list-group list-group-flush">
+                    @foreach (var certificate in Model.Mentor.Certificates)
+                    {
+                        <li class="list-group-item">
+                            <a class="text-left" asp-page="/Mentor/Profile/CertificateDetails" asp-route-id="@certificate.ID">
+                                <strong>@certificate.Name</strong> - @certificate.Type
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

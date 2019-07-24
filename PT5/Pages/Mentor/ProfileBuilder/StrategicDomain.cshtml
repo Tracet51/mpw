@@ -1,0 +1,46 @@
+﻿@page
+@model MPW.Pages.Mentor.ProfileBuilder.StrategicDomainModel
+
+@{
+    ViewData["Title"] = "Strategic Domain";
+}
+
+<h2>Strategic Domain</h2>
+
+@if (Model.SuccessfullyCreated)
+{
+    <div class="alert alert-success" role="alert"><strong>Successfully Created a Stategic Domain</strong></div>
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="StrategicDomain.Name" class="control-label"></label>
+                <input asp-for="StrategicDomain.Name" class="form-control" placeholder="Financial Planning" />
+                <span asp-validation-for="StrategicDomain.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StrategicDomain.Description" class="control-label"></label>
+                <input asp-for="StrategicDomain.Description" class="form-control" placeholder="I have much experience doing finanical projections" />
+                <span asp-validation-for="StrategicDomain.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StrategicDomain.Type" class="control-label"></label>
+                <input asp-for="StrategicDomain.Type" class="form-control" placeholder="Ex: Finance, Technical, Networking, etc..." />
+                <span asp-validation-for="StrategicDomain.Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add Strategic Domain" class="btn btn-default" />
+                <!--<a asp-area="Identity" asp-page="/Account/Manage/Index" class="btn btn-danger">Finish Profile</a>-->
+                <a asp-page="../Pairing/Index" class="btn btn-danger">Finish Profile</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

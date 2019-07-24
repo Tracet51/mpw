@@ -1,0 +1,38 @@
+﻿@page
+@model MPW.Pages.Mentor.Profile.StrategicDomainDeleteModel
+
+@{
+    ViewData["Title"] = "Strategic Domain Delete";
+}
+
+<h2>Delete a Strategic Domain</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StrategicDomain.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StrategicDomain.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StrategicDomain.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StrategicDomain.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StrategicDomain.Type)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StrategicDomain.Type)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="StrategicDomain.ID" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>
+</div>

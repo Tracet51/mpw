@@ -1,0 +1,75 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    body, h1, h2, h3, h4, h5, h6 {
+        font-family: "Lato", sans-serif
+    }
+
+    .w3-bar, h1, button {
+        font-family: "Montserrat", sans-serif
+    }
+
+    .fa-anchor, .fa-coffee {
+        font-size: 200px
+    }
+</style>
+
+<body>
+
+    <!-- Header -->
+    <header class="w3-container w3-red w3-center" style="padding:128px 16px; background-color: #E86F39!important;">
+        <h1 class="w3-margin w3-jumbo">Esolvit Inc.'s Mentorship Portal</h1>
+        <p class="w3-xlarge">Access resources, coordinate meetings, and fulfill requirements for your Esolvit Inc. mentorship.</p>
+        <a href="../Identity/Account/Register" class="btn btn-default" style="margin-right:20px;">Register</a>
+        <a href="../Identity/Account/Login" class="btn btn-default">Login</a>
+        <!-- <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Login</button> -->
+    </header>
+
+    <!-- First Grid -->
+    <div class="w3-row-padding w3-padding-64 w3-container">
+        <div class="w3-content">
+            <div class="w3-twothird">
+                <h1>Esolvit Inc. Mentorship Program</h1>
+                <h5 class="w3-padding-32">Esolvit Inc., a IT Services and Solutions provider, has a burgeoning mentorship program dedicated to providing expertise and access to learning resources for HUB-certified small businesses.</h5>
+
+                <p class="w3-text-grey">
+                    Esolvit Inc., as a HUB certified company, has over 10 years of experience serving its federal, state, and local clients with IT services and solutions. Throughout this process, the company has gained immeasurable experience,
+                    access to resources and knowledge, and tips and tricks to become a successful government contractor. With these insights, Esolvit Inc. has started a mentorship program to help smaller HUB certified businesses seeking guidance
+                    and help through the process of bidding for their first contract. If you are interested in becoming a mentor, protege, or client on this platform, please contact Usha Boddapu, CEO of Esolvit Inc., at <a href="mailto:usha@esolvit.com">usha@esolvit.com</a>.
+                </p>
+            </div>
+
+            <div class="w3-third w3-center">
+                <img src="https://www.esolvit.com/images/itservices.jpg" style="max-height:362px;" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Grid -->
+    <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+        <div class="w3-content">
+            <h1>More About Esolvit Inc.</h1>
+            <h5 class="w3-padding-32">We integrate People, Process, and Technology to “Rethink IT.”</h5>
+
+            <p class="w3-text-grey">
+                Esolvit Inc., is an Austin, Texas based IT Services and Solutions Company serving our local and nationwide clients for over 15 years. We empower organizations by harnessing the power of the digital economy with rapid adoption of innovative technologies to successfully meet their goals.
+                <br /><br />
+                We are HUB certified and have the privilege of providing modern and progressive solutions to our State, Local, and Federal Government entities.
+                <br /><br />
+                Our solutions are strategically customized to changing business needs and goals. We assist customers to transform businesses to thrive in an ever-changing technological world. Through strategic services and the co-creation of innovative and branding solutions we use upcoming technologies including Big Data, Cloud Computing and IoT (Internet of Things). Our in-depth industry-wide experience, deep technology expertise, comprehensive portfolio of services and solutions, and the business model aligned to each industry help us to support our clients to redefine, redesign, and digitally reinvent efficient business operations.
+                <br /><br />
+                Esolvit’s business is driven by aligning our partners and customers at the core of everything we do. The overall culture of speed, simplicity, and excellence is how we continue to succeed.
+            </p>
+        </div>
+    </div>
+
+</body>
